@@ -9,6 +9,9 @@ class FlashCard extends React.Component {
   toggleEditing = () => {
     this.setState({ editing: !this.state.editing})
   }
+  handleRemove = () => {
+    this.props.remove(this.props.id)
+  }
   render() {
     const {question, answer, } = this.props;
     const { showAnswer, editing, } = this.state;
@@ -25,7 +28,7 @@ class FlashCard extends React.Component {
         <Button icon color="blue" onClick={this.toggleEditing}>
           <Icon name="edit outline" />
         </Button>
-        <Button icon color="red">
+        <Button icon color="red" onClick={this.handleRemove}>
           <Icon name="trash" />
         </Button>
       </Segment>

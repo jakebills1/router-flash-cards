@@ -13,7 +13,7 @@ class FlashCards extends React.Component {
     ]
   }
   renderCards = () => {
-    return this.state.cards.map( card => <FlashCard key={card.id} {...card} edit={this.edit}/> );
+    return this.state.cards.map( card => <FlashCard key={card.id} {...card} edit={this.edit} remove={this.remove}/> );
   }
   add = (card) => {
     const { cards, } = this.state;
@@ -27,6 +27,10 @@ class FlashCards extends React.Component {
       return card
     })
     this.setState({cards, })
+  }
+  remove = (id) => {
+    const cards = this.state.cards.filter( card => card.id !== id )
+    this.setState({ cards, })
   }
   getId = () => Math.floor((1 + Math.random()) * 10000)
   render() {
