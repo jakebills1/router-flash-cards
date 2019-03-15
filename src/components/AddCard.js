@@ -2,13 +2,26 @@ import React from 'react';
 import { Form, } from 'semantic-ui-react';
 class AddCard extends React.Component {
   state = { question: "", answer: ""}
+  
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value})
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.add(this.state);
+    if (this.props.id) {
+      this.props.edit({ id: this.props.id, ...this.state, })
+      this.props.toggle()
+    } else {
+      this.props.add(this.state);
+    }
     this.setState({ question: "", answer: ""})
+  }
+
+  componentDidMount() {
+    if (this.props.id) {
+      const { question, answer, } = this.props;
+      this.setState({ question: question, answer: answer})
+    }
   }
   render() {
     return (

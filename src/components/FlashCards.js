@@ -13,18 +13,26 @@ class FlashCards extends React.Component {
     ]
   }
   renderCards = () => {
-    return this.state.cards.map( card => <FlashCard key={card.id} {...card}/> );
+    return this.state.cards.map( card => <FlashCard key={card.id} {...card} edit={this.edit}/> );
   }
   add = (card) => {
     const { cards, } = this.state;
     const newCard = { id: this.getId(), ...card }
     this.setState({ cards: [newCard, ...cards]})
   }
+  edit = (editedCard) => {
+    const cards = this.state.cards.map( card => {
+      if (card.id === editedCard.id)
+        return editedCard
+      return card
+    })
+    this.setState({cards, })
+  }
   getId = () => Math.floor((1 + Math.random()) * 10000)
   render() {
     return (
       <div>
-        <AddCard add={this.add}/>
+        <AddCard add={this.add} />
         {this.renderCards()}
       </div>
     )
