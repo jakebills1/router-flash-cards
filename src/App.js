@@ -1,7 +1,7 @@
 import React, { Component, Fragment, } from 'react';
 import { Route, Switch, } from 'react-router-dom';
 import Home from './components/Home'
-import About from './components/About'
+import StudyBreak from './components/StudyBreak'
 import NoMatch from './components/NoMatch'
 import Navbar from './components/Navbar'
 import FlashCards from './components/FlashCards';
@@ -16,8 +16,8 @@ class App extends Component {
         <Container>
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route exact path='/about' component={About} />
             <Route exact path='/cards' component={FlashCards} />
+            <Route exact path='/studybreak' component={StudyBreak} />
             <Route component={NoMatch} />
           </Switch>
         </Container>

@@ -8,14 +8,14 @@ const Navbar = () => (
         Home
       </Menu.Item>
     </Link>
-    <Link to='/about'>
-      <Menu.Item>
-        About
-      </Menu.Item>
-    </Link>
     <Link to='/cards'>
       <Menu.Item>
         Flash Cards
+      </Menu.Item>
+    </Link>
+    <Link to='/studybreak'>
+      <Menu.Item>
+        Study Break
       </Menu.Item>
     </Link>
   </Menu>
